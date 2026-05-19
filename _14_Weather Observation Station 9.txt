@@ -1,0 +1,15 @@
+/*
+Enter your query here.
+*/
+
+SELECT distinct CITY FROM STATION WHERE
+CITY  NOT LIKE 'a%'
+and
+CITY NOT like 'e%'
+and
+ CITY not like 'i%'
+and
+CITY not like 'o%'
+and
+CITY not like 'u%'
+;

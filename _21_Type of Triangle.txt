@@ -1,0 +1,28 @@
+/*
+  
+  SELECT CASE
+  WHEN (A+B<=C) THEN 'Not A Triangle'
+  WHEN (A=B) AND (B=C) THEN 'Equilateral'
+  WHEN (A=B) OR (B=C) OR (A=C) THEN 'Isosceles'
+  ELSE 'Scalene'
+END
+FROM triangles;
+Enter your query here.
+*/
+
+select case
+    when ( A+B<=C) or (B+C<=A) or (C+A<=B)then 'Not A Triangle'
+    
+    -- not a triangle condition write first b/z it is not the property of the triangle  so first check this declare first that if that is not then  the triangle can be one of these below
+    when (A=B) and (B=C) then 'Equilateral'
+    when (A=B) or (B=C) or (C=A) then 'Isosceles'
+
+   else 'Scalene'
+    
+  
+  end
+  from triangles;
+
+
+  
+  

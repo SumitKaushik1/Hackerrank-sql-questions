@@ -1,0 +1,115 @@
+/*
+Enter your query here.
+*/
+
+
+-- from 32 to 37 line
+-- actually when we do  occupation ='Doctor' ,first group come ie 
+/*
+group 1
+Eve Actor 1
+Aamina Doctor 1
+Ashley Professor 1
+Christeen Singer 1
+*/
+-- when select row_num=1
+-- ie is the first group1
+-- it will see max function ie it has to find the max value in the group 1
+-- go inside the max function here occupation =DOCTOR SO ,so group1 each and every record --- is compared with doctor which ever is matched that name is displayed same 
+-- same followed with occupation= actor,professor,singer 
+/*
+-- when select row_num=2
+-- ie is the first group1
+-- it will see max function ie it has to find the max value in the group 1
+-- go inside the max function here occupation =Professor SO ,so group1 each and every record --- is compared with doctor which ever is matched that name is displayed same 
+-- same followed with occupation= actor,professor,singer 
+so on 
+
+*/
+
+
+
+select 
+-- row_num ,
+max(if(occupation ='Doctor',name,null))
+,max(if(occupation ='professor',name,null))
+,max(if(occupation ='Singer',name,null))
+,max(if(occupation ='Actor',name,null))
+
+from
+(
+ select name,occupation,
+   -- row number as row_num
+(row_number() over(partition by occupation order by name)) as row_num
+from occupations
+) as new_occupations 
+group by row_num
+    -- by default ascening order group by 
+  
+
+/*
+from 41th to 44 line
+Eve Actor 1
+Jennifer Actor 2
+Ketty Actor 3
+Samantha Actor 4
+Aamina Doctor 1
+Julia Doctor 2
+Priya Doctor 3
+Ashley Professor 1
+Belvet Professor 2
+Britney Professor 3
+Maria Professor 4
+Meera Professor 5
+Naomi Professor 6
+Priyanka Professor 7
+Christeen Singer 1
+Jane Singer 2
+Jenny Singer 3
+Kristeen Singer 4
+*/
+
+-- firtly the occupation table is divided by occupation 
+-- like 
+-- name,occupation,row number()
+/*
+Eve Actor 1
+Jennifer Actor 2
+Ketty Actor 3
+Samantha Actor 4
+Aamina Doctor 1
+Julia Doctor 2
+Priya Doctor 3
+Ashley Professor 1
+Belvet Professor 2
+Britney Professor 3
+Maria Professor 4
+Meera Professor 5
+Naomi Professor 6
+Priyanka Professor 7
+Christeen Singer 1
+Jane Singer 2
+Jenny Singer 3
+Kristeen Singer 4
+*/
+-- you can see partition is according to the occupation so the table 
+-- is divied according to the occupation and firtly doctor are comming in that partition of doctor 1,2 are row number in that particular partition 
+-- so in actor so on  bydefault acsending order in ocuupation 
+-- since order by name so the  ie inside the parttion ie actor further inside name in ascending order
+-- we have this table 
+
+/*
+whatever which is comming from 41 th to 44th  we make the group  in line in 46th line  
+Eve Actor 1
+Aamina Doctor 1
+Ashley Professor 1
+Christeen Singer 1
+
+Jennifer Actor 2
+Julia Doctor 2
+Belvet Professor 2
+Jane Singer 2
+
+so on 
+
+*/

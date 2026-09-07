@@ -1,0 +1,17 @@
+/*
+Enter your query here.
+*/
+
+select N,
+CASE
+WHEN P is NULL THEN  'Root'
+/*root is always one so and if any node it doesnot has the parent =null obviouly it is root
+ we are catching the root here only first b/z it satisfies the inner condtion also */
+when n in (select p from BST) THEN 'Inner'
+/* it means than if n  is equal to p it means n is somewhere is the parent of other 
+ if n is the parent of the other it means n itself cannot be  Leaf node,ie is the non leaf -node*/
+else 'Leaf'
+END
+from BST
+Order by N;
+;

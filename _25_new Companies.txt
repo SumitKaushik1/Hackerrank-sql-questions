@@ -1,0 +1,31 @@
+/*
+Enter your query here.
+ write a query to print the company_code
+ , founder name
+ , total number of lead managers
+ , total number of senior managers
+ , total number of managers
+ , and total number of employees
+  right to left you can take
+  same     different
+  
+  join is nothing but inner join only
+  
+  note group by conditon ,so condtion will be repeating we can count the columsn in that repeatring one only 
+  
+  
+  after join lead_manager_code ,senior_manager_code ,manageer_code will be repeating so we want distinct then count that 
+  
+  since working is hiearchy so we have to join condtion must be in hiearchy all will be joined accroding to their manager or anything 
+*/
+
+
+
+ 
+select c.company_code,c.founder,count(distinct lm.lead_manager_code),count(distinct sm.senior_manager_code),count(distinct m.manager_code),count(distinct employee_code)
+from company c join  Lead_Manager lm on  c.company_code=lm.company_code
+ join Senior_Manager sm on sm.company_code=lm.company_code 
+ join Manager m on m.company_code=sm.company_code
+ join Employee e on e.company_code=m.company_code
+group by c.company_code,c.founder
+;

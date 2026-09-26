@@ -1,0 +1,4 @@
+select round(avg(population),0)
+from city;
+
+-- 1 means round  to 1 decimal place, here 0 mean round up to 0 number of deciamal place 

@@ -1,0 +1,11 @@
+/*
+Enter your query here.
+*/
+
+-- count always works with the group by keyword
+
+select (salary*months),count(*) from employee where (salary*months)=(select max(salary*months) 
+from employee
+) group by (salary*months);
+
+

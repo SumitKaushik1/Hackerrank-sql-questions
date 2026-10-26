@@ -58,4 +58,3 @@
 56. Draw The Triangle 1  
 57. Draw The Triangle 2  
 58. Print Prime Numbers  
-<br>

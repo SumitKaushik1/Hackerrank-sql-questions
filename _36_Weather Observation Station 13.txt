@@ -1,0 +1,6 @@
+/*
+Enter your query here.
+*/
+-- TRUNCATE MEANS MAEK THE ZERO TO THE VALUE 
+select TRUNCATE(sum(LAT_N),4)
+FROM STATION WHERE LAT_N between 38.7880 AND  137.2345;

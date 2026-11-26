@@ -1,0 +1,33 @@
+/*
+Enter your query here.
+*/
+-- SET @rowindex := -1;
+ 
+-- SELECT
+--   AVG(d.distance) as Median 
+-- FROM
+--  (SELECT @rowindex:=@rowindex + 1 AS rowindex,
+ --         demo.distance AS distance
+--    FROM demo
+--    ORDER BY demo.distance) AS d
+-- WHERE
+-- d.rowindex IN (FLOOR(@rowindex / 2), CEIL(@rowindex / 2));
+
+
+set @rowIndex=-1; -- with set  use the '=' sign
+
+select round(d.lat_n,4) as median
+
+-- with select we use ':='
+
+from 
+         
+ -- @rowIndex -> 'variable is changing' as 'column name'
+(select @rowIndex:=@rowIndex+1 as rowIndex ,lat_n
+from station s
+order by s.lat_n )as d
+
+    -- @rowIndex variable value is equal to total  number of records
+    where d.rowIndex in (ceil(@rowIndex/2) , floor(@rowIndex/2));
+    -- o to 15 ie to tatal 16 count ie even numbers ,ie 8,7
+    -- o to 14 ie to total 15 count ie  odd numbers ,ie 7,7
